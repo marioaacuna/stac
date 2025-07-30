@@ -1,0 +1,377 @@
+ARM_JOINTS:
+- shoulder
+- scapula
+- elbow
+- wrist
+- finger
+
+
+DIFF_STEP: 3.0e-08
+FTOL: 0.0001
+IS_LIMB:
+- knee
+- toe
+- ankle
+- foot
+- shoulder
+- elbow
+- finger
+- hand
+
+
+KEYPOINT_COLOR_PAIRS:
+  AnkleL: 0 0 .3 1
+  AnkleR: .3 0 0 1
+  EarL: .9 .7 .5 1
+  EarR: .9 .7 .5 1
+  ElbowL: 0 0 .8 1
+  ElbowR: .8 0 0 1
+  ForepawL: 0 0 .8 1
+  ForepawR: .8 0 0 1
+  HindpawL: 0 0 .3 1
+  HindpawR: .3 0 0 1
+  KneeL: 0 0 .3 1
+  KneeR: .3 0 0 1
+  ShoulderL: 0 0 .8 1
+  ShoulderR: .8 0 0 1
+  Snout: .8 .8 0 1
+  SpineF: .8 .8 .8 1
+  SpineM: .8 .8 .8 1
+  Tail_base_: .6 .3 .1 1
+  Tail_end_: .6 .3 .1 1
+  Tail_mid_: .6 .3 .1 1
+  WristL: 0 0 .8 1
+  WristR: .8 0 0 1
+
+# KEYPOINT_INITIAL_OFFSETS:
+#   AnkleL: -0.0103364929081069 -0.001512657498747351 -0.0070590683274876384
+#   AnkleR: -0.0103364929081069 0.001512657498747351 -0.0070590683274876384
+#   EarL: 0. 0. 0.
+#   EarR: 0. 0. 0.
+#   ElbowL: -0.005097986675626298 0.003313691339157094 -0.007137181345876816
+#   ElbowR: -0.005097986675626298 -0.003313691339157094 -0.007137181345876816
+#   ForepawL: 0.0009701580210686298 0.0004850795065343149 -0.002667937285938732
+#   ForepawR: 0.0009701580210686298 -0.0004850795065343149 -0.002667937285938732
+#   HindpawL: 0.006751981796375242 0.002436584735213674 -0.0008806932777880749
+#   HindpawR: 0.006751981796375242 -0.002436584735213674 -0.0008806932777880749
+#   KneeL: 0.004935246510677955 0.005593279378768346 -0.0082254108511300
+#   KneeR: 0.004935246510677955 -0.005593279378768346 -0.0082254108511300
+#   ShoulderL: 0.009184 0.0031488 -0.0081344
+#   ShoulderR: 0.009184 -0.0031488 -0.0081344
+#   Snout: 0. 0. 0.
+#   SpineF: -0.0048 0. 0.0
+#   SpineM: 0. 0. 0.0
+#   Tail_base_: 0. 0. 0.
+#   Tail_end_: 0. 0. 0.
+#   Tail_mid_: 0. 0. 0.
+#   WristL: 0. 0. 0.0
+#   WristR: 0. 0. 0.0
+
+KEYPOINT_INITIAL_OFFSETS:
+  # For joints, the offset is now [0,0,0] because the keypoint is paired
+  # with the body that originates at that joint's center of rotation.
+  AnkleL: [0., 0., 0.]
+  AnkleR: [0., 0., 0.]
+  EarL: [0., 0., 0.]
+  EarR: [0., 0., 0.]
+  ElbowL: [0., 0., 0.]
+  ElbowR: [0., 0., 0.]
+  # Offset from the finger joint origin to the center of the paw tip.
+  #ForepawL: [-0.0015, 0.0, 0.0]
+  #ForepawR: [-0.0015, 0.0, 0.0]
+  ForepawL: [-0.0005, 0.0, 0.0]
+  ForepawR: [-0.0005, 0.0, 0.0]
+  
+  # Offset from the toe joint origin to the center of the hindpaw tip.
+  #HindpawL: [-0.0026, 0.0, 0.0]
+  #HindpawR: [-0.0026, 0.0, 0.0]
+  HindpawL: [-0.0016, 0.0, 0.0]
+  HindpawR: [-0.0016, 0.0, 0.0]
+  
+  KneeL: [0., 0., 0.]
+  KneeR: [0., 0., 0.]
+  ShoulderL: [0., 0., 0.]
+  ShoulderR: [0., 0., 0.]
+  Snout: [-0.001, 0.0, -0.001] #
+  SpineF: [0., 0., 0.]
+  # A non-zero guess for the mid-spine marker relative to the pelvis origin.
+  SpineM: [-0.0015, 0.0, 0.00]
+  # The origin of vertebra_C1 is the base of the tail, so the offset is zero.
+  Tail_base_: [0., 0., 0.]
+  Tail_end_: [0., 0., 0.]
+  Tail_mid_: [0., 0., 0.]
+  WristL: [0., 0., 0.]
+  WristR: [0., 0., 0.]
+
+# KEYPOINT_INITIAL_OFFSETS:
+#   # For joints, the offset is now [0,0,0] because the keypoint is paired
+#   # with the body that originates at that joint's center of rotation.
+#   AnkleL: [0., 0., 0.]
+#   AnkleR: [0., 0., 0.]
+#   EarL: [0., 0., 0.]
+#   EarR: [0., 0., 0.]
+#   ElbowL: [0., 0., 0.]
+#   ElbowR: [0., 0., 0.]
+#   # Offset from the finger joint origin to the center of the paw tip.
+#   ForepawL: [0.0008, 0.0, 0.0]
+#   ForepawR: [0.0008, 0.0, 0.0]
+#   # Offset from the toe joint origin to the center of the hindpaw tip.
+#   HindpawL: [0.0013, 0.0, 0.0]
+#   HindpawR: [0.0013, 0.0, 0.0]
+#   # The hip offset is the position of the hip joint relative to the pelvis origin.
+#   HipL: [-0.00077, 0.00184, -0.00158]
+#   HipR: [-0.00077, -0.00184, -0.00158]
+#   KneeL: [0., 0., 0.]
+#   KneeR: [0., 0., 0.]
+#   ShoulderL: [0., 0., 0.]
+#   ShoulderR: [0., 0., 0.]
+#   # Offset from the skull's origin to the tip of the snout.
+#   Snout: [0.0055, 0.0, -0.001]
+#   SpineF: [0., 0., 0.]
+#   # A non-zero guess for the mid-spine marker relative to the pelvis origin.
+#   SpineM: [0.001, 0.0, 0.0005]
+#   # The origin of vertebra_C1 is the base of the tail, so the offset is zero.
+#   Tail_base_: [0., 0., 0.]
+#   Tail_end_: [0., 0., 0.]
+#   Tail_mid_: [0., 0., 0.]
+#   WristL: [0., 0., 0.]
+#   WristR: [0., 0., 0.]
+
+# KEYPOINT_INITIAL_OFFSETS:
+#   AnkleL: [0., 0., 0.]
+#   AnkleR: [0., 0., 0.]
+#   EarL: [0., 0., 0.]
+#   EarR: [0., 0., 0.]
+#   ElbowL: [0., 0., 0.]
+#   ElbowR: [0., 0., 0.]
+#   ForepawL: [0.0016, 0.0, 0.0]
+#   ForepawR: [0.0016, 0.0, 0.0]
+#   HindpawL: [0.0027, 0.0, 0.0]
+#   HindpawR: [0.0027, 0.0, 0.0]
+#   HipL: [-0.0016, 0.0038, -0.0033]
+#   HipR: [-0.0016, -0.0038, -0.0033]
+#   KneeL: [0., 0., 0.]
+#   KneeR: [0., 0., 0.]
+#   ShoulderL: [0., 0., 0.]
+#   ShoulderR: [0., 0., 0.]
+#   Snout: [0.011, 0.0, -0.002]
+#   SpineF: [0., 0., 0.]
+#   SpineM: [0., 0., 0.] # Paired with Tail_base_ (vertebra_C1), so offset is zero
+#   Tail_base_: [0., 0., 0.]
+#   Tail_end_: [0., 0., 0.]
+#   Tail_mid_: [0., 0., 0.]
+#   WristL: [0., 0., 0.]
+#   WristR: [0., 0., 0.]
+
+# # For a rat:
+# KEYPOINT_INITIAL_OFFSETS:
+#   AnkleL: -0.03230154033783406 -0.004727054683585472 -0.02205958852339887
+#   AnkleR: -0.03230154033783406 0.004727054683585472 -0.02205958852339887
+#   EarL: 0. 0. 0.
+#   EarR: 0. 0. 0.
+#   ElbowL: -0.01593120836133218 0.01035528543486592 -0.02230369170586505
+#   ElbowR: -0.01593120836133218 -0.01035528543486592 -0.02230369170586505
+#   HindpawL: 0.02109994311367263 0.007614327297542731 -0.002752166493087734
+#   HindpawR: 0.02109994311367263 -0.007614327297542731 -0.002752166493087734
+#   ForepawL: 0.003031746915839468 0.001515873457919734 -0.008337304018558537
+#   ForepawR: 0.003031746915839468 -0.001515873457919734 -0.008337304018558537
+#   KneeL: 0.01542264534586861 0.01747899805865108 -0.02570440890978101
+#   KneeR: 0.01542264534586861 -0.01747899805865108 -0.02570440890978101
+#   ShoulderL: 0.0287 0.00984 -0.02542
+#   ShoulderR: 0.0287 -0.00984 -0.02542
+#   Snout: 0. 0. 0.
+#   SpineF: -0.015 0. 0.0
+#   SpineM: 0. 0. 0.0
+#   Tail_base_: 0. 0. 0.
+#   WristL: 0. 0. 0.0
+#   WristR: 0. 0. 0.0
+#   Tail_end_: 0. 0. 0.
+#   Tail_mid_: 0. 0. 0.
+
+# KEYPOINT_MODEL_PAIRS:
+#   AnkleL: lower_leg_L
+#   AnkleR: lower_leg_R
+#   EarL: skull
+#   EarR: skull
+#   ElbowL: upper_arm_L
+#   ElbowR: upper_arm_R
+#   HindpawL: foot_L
+#   HindpawR: foot_R
+#   ForepawL: hand_L
+#   ForepawR: hand_R
+#   KneeL: upper_leg_L
+#   KneeR: upper_leg_R
+#   ShoulderL: scapula_L
+#   ShoulderR: scapula_R
+#   Snout: skull
+#   SpineF: vertebra_cervical_5
+#   SpineM: vertebra_1
+#   Tail_base_: pelvis
+#   WristL: lower_arm_L
+#   WristR: lower_arm_R
+#   Tail_end_: vertebra_C30
+#   Tail_mid_: vertebra_C20
+
+KEYPOINT_MODEL_PAIRS:
+  AnkleL: foot_L #lower_leg_L
+  AnkleR: foot_R #lower_leg_R
+  EarL: skull
+  EarR: skull
+  ElbowL: lower_arm_L #upper_arm_L
+  ElbowR: lower_arm_R #upper_arm_R
+  ForepawL: finger_L #hand_L
+  ForepawR: finger_R #hand_R
+  HindpawL: toe_L #foot_L
+  HindpawR: toe_R #foot_R
+  KneeL: lower_leg_L #upper_leg_L
+  KneeR: lower_leg_R #upper_leg_R
+  ShoulderL: upper_arm_L #scapula_L
+  ShoulderR: upper_arm_R #scapula_R
+  Snout: skull
+  SpineF: vertebra_cervical_5
+  SpineM: pelvis # pelvis #pelvis # vertebra_3 # vertebra_5 pelvis #vertebra_1
+  Tail_base_: vertebra_C3 # vertebra_C3 #pelvis # vertebra_C1
+  Tail_end_: vertebra_C30
+  Tail_mid_: vertebra_C20
+  WristL: hand_L #lower_arm_L
+  WristR: hand_R #lower_arm_R
+
+
+
+LIMB_FTOL: 1.0e-07
+PARTS_TO_ZERO:
+- toe
+- ankle
+- finger
+- wrist
+- hand
+- foot
+
+
+ROOT_DIFF_STEP: 1.0e-08
+ROOT_FTOL: 0.0001
+
+SITES_TO_REGULARIZE:
+  - ForepawL
+  - ForepawR
+  - ElbowL
+  - ElbowR
+  - ShoulderL
+  - ShoulderR
+  - HindpawL
+  - HindpawR
+  - KneeL
+  - KneeR
+# - AnkleL
+# - AnkleR
+# - WristL
+# - WristR
+  - Snout
+  - SpineF
+  - SpineM
+  - EarL
+  - EarR
+ # - Tail_base_
+
+TRUNK_OPTIMIZATION_KEYPOINTS:
+  - SpineF
+  - SpineM
+  #- Tail_base_
+  - ShoulderL
+  - ShoulderR
+
+  
+INDIVIDUAL_PART_OPTIMIZATION:
+  "r_leg": [
+    "pelvis",
+    "vertebra_1",
+    "vertebra_2",
+    "vertebra_3",
+    "vertebra_4",
+    "vertebra_5",
+    "vertebra_6",
+    "hip_R",
+    "knee_R",
+    "ankle_R",
+    "foot_R"
+    ]
+  "l_leg": [
+    "pelvis",
+    "vertebra_1",
+    "vertebra_2",
+    "vertebra_3",
+    "vertebra_4",
+    "vertebra_5",
+    "vertebra_6",
+    "hip_L",
+    "knee_L",
+    "ankle_L",
+    "foot_L"
+    ]
+  "r_arm": [
+    "vertebra_cervical_3", # Anchor point
+    "vertebra_cervical_4", # Anchor point
+    "vertebra_cervical_5", # Anchor point
+    "scapula_R",
+    "shoulder_R",
+    "elbow_R",
+    "hand_R",
+    "finger_R"
+    ]
+  "l_arm": [
+    "vertebra_cervical_3", # Anchor point
+    "vertebra_cervical_4", # Anchor point
+    "vertebra_cervical_5", # Anchor point
+    "scapula_L",
+    "shoulder_L",
+    "elbow_L",
+    "hand_L",
+    "finger_L"
+    ]
+  "head": [
+    "atlas",
+    "cervical",
+    "atlant_extend"
+  ]
+
+
+# Lock the mandible to a position if there is no jaw tracking
+MANDIBLE_POS: -0.297
+
+# If you have reason to believe that the initial offsets are correct for particular keypoints, 
+# you can regularize those sites using _SITES_TO_REGULARIZE. 
+M_REG_COEF: 0.05
+# SITES_TO_REGULARIZE:
+# - HandL
+# - HandR
+# - SpineF
+# - SpineL
+# - SpineM
+
+N_SAMPLE_FRAMES: 100 #100
+
+# Time of each frame in seconds.
+TIME_BINS: 0.02
+
+# If you want to use a different arena, you can specify it here.
+ARENA_TYPE: DannceArena
+ARENA_DIAMETER: 0.5 # 0.5
+
+#Z_OFFSET: 2.00
+
+# Number of alternating pose and offset optimization rounds. 
+N_ITERS: 2
+
+STAND_HEIGHT: 1.5
+#TIME_BINS: 0.03
+XML_PATH: /Users/marioacuna/Documents/Repositories/Mujoco_test/analysis_MA/models/mouse_MA_anatomical03.xml
+adaptive_z_offset_value: 0.2
+hfield_image_path: ./params/floor_models/test_floormap.p
+Q_REG_COEF: 0.0 # 0.05 # no effect?
+SCALE_FACTOR: 0.75 # ; 0.5 works for the overlay only # 0.9 #2.9
+TEMPORAL_REG_COEF: 0.1 # 0.2
+Z_OFFSET: 0.005
+#Z_PERC: 1.0
+SKELETON_PATH: /Users/marioacuna/Documents/Repositories/Cam_cal_and_label3D_PRO/Label3D/skeletons/mouse22.mat
+MM_TO_METERS: 1000
+n_frames: 1000
