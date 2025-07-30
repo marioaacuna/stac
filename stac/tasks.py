@@ -98,7 +98,7 @@ class ViewMocap(composer.Task):
                 "site",
                 name=name,
                 type="sphere",
-                size=[0.005],
+                size=[0.002],
                 rgba=rgba,
                 pos=start,
                 group=2,

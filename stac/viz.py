@@ -16,11 +16,11 @@ from typing import Text, List, Dict
 import os
 
 ALPHA_BASE_VALUE = 0.5
-FPS = 50
+FPS = 100
 
 # Standard image shape for dannce rig data
-HEIGHT = 1200
-WIDTH = 1920
+HEIGHT = 1024
+WIDTH = 1152
 MODELS_PATH = os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "models"
 )
@@ -155,14 +155,23 @@ def overlay_frame(
     """
     cam_id = int(camera[-1]) - 1
     # Load and undistort the rgb frame
+    # Fixed undistortion with correct scaling and arrangement
+    R = params[cam_id].RDistort
+    T = params[cam_id].TDistort
+    dist_coeffs = np.array([R[0], R[1], T[0], T[1], R[2]]) * 0.01  # Scale down by 100x
     rgb_frame = cv2.undistort(
-        rgb_frame,
-        params[cam_id].K.T,
-        np.concatenate(
-            [params[cam_id].RDistort, params[cam_id].TDistort], axis=0
-        ).T.squeeze(),
-        params[cam_id].K.T,
+    rgb_frame.astype(np.uint8),
+    params[cam_id].K.T.astype(np.float64),
+    dist_coeffs.astype(np.float64),
     )
+    # rgb_frame = cv2.undistort(
+    #     rgb_frame,
+    #     params[cam_id].K.T,
+    #     np.concatenate(
+    #         [params[cam_id].RDistort, params[cam_id].TDistort], axis=0
+    #     ).T.squeeze(),
+    #     params[cam_id].K.T,
+    # )
 
     # Calculate the alpha mask using the segmented video
     alpha = (seg_frame[:, :, 0] >= 0.0) * ALPHA_BASE_VALUE

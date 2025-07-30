@@ -26,6 +26,7 @@ def rodent_mocap(
     arena_diameter: float = None,
     arena_center: List = None,
     alpha=1.0,
+    qpos=None,
 ):
     """View a rat with mocap sites.
 
@@ -55,7 +56,7 @@ def rodent_mocap(
         arena_center=arena_center,
         alpha=alpha,
     )
-    task = tasks.ViewMocap(walker, arena, kp_data, params=params)
+    task = tasks.ViewMocap(walker, arena, kp_data, params=params, qpos=qpos)
     time_limit = params["TIME_BINS"] * (params["n_frames"])
     return composer.Environment(
         task,

@@ -55,8 +55,11 @@ def convert(file_path, offset_path, params_path, save_path):
     mjlib.mj_comPos(env.physics.model.ptr, env.physics.data.ptr)
     env.reset()
 
-    # Load the offsets and set the sites to those positions.
-    with open(params["offset_path"], "rb") as f:
+    # # Load the offsets and set the sites to those positions.
+    # with open(params["offset_path"], "rb") as f:
+    #     in_dict = pickle.load(f)
+    # import pickle
+    with open(offset_path, "rb") as f:
         in_dict = pickle.load(f)
 
     sites = env.task._walker.body_sites
@@ -75,7 +78,7 @@ def convert(file_path, offset_path, params_path, save_path):
     # Loop through the clip, saving the sites on each frame.
     n_frame = 0
     walker_body_sites = np.zeros(
-        (params["n_frames"], sites.shape[0], sites.shape[1], sites.shape[2])
+        (params["n_frames"], sites.shape[0], sites.shape[1])
     )
     while prev_time < env._time_limit:
         while (np.round(env.physics.time() - prev_time, decimals=5)) < params[
@@ -90,10 +93,13 @@ def convert(file_path, offset_path, params_path, save_path):
         print(n_frame)
         prev_time = np.round(env.physics.time(), decimals=2)
 
-    # Save the results
-    if not os.exists(os.dirname(save_path)):
-        os.makedirs(os.dirname(save_path))
-    savemat(save_path, {"walker_body_sites", walker_body_sites})
+    # Save the results # fix path
+    print(f"Saving walker body sites to {save_path}")
+    
+
+    if not os.path.exists(os.path.dirname(save_path)):
+        os.makedirs(os.path.dirname(save_path))
+    savemat(save_path, {"walker_body_sites": walker_body_sites})
     # with open(save_path, "wb") as f:
     #     pickle.dump(walker_body_sites, f)
 
